@@ -3,7 +3,7 @@ Resource          settings.robot
 Library           ../libs/ExtendDictionary.py
 Library             ../libs/Additional.py
 
-Suite Setup  Run Keywords   Get data from keystone with '${keystone_v3}'
+#Suite Setup  Run Keywords   Get data from keystone with '${keystone_v3}'
 Suite Setup  Run Keywords   Get date and _index for Elasticsearch (Y.M.D)   Create ES body
 Test Setup   Run Keywords    Clear index in elasticsearch
 Suite Teardown   Run Keywords    Clear index in elasticsearch
@@ -11,8 +11,8 @@ Suite Teardown   Run Keywords    Clear index in elasticsearch
 *** Test Cases ***
 Get information on cluster health
     [Tags]  Graph-0.1  positive  es_migration_TC  ui_migration_TC
-    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
-    Set Global Variable    ${url}    ${IP_web}/elasticsearch/_nodes
+#    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
+    Set Global Variable    ${url}    ${kibana_node}/elasticsearch/_nodes
     Set Global Variable    ${method}    GET
     GET Request    ${url}
     ${response_body}    Get Response Body
@@ -22,8 +22,8 @@ Get information on cluster health
 
 Successful count of log messages in elasticsearch through proxy
     [Tags]  Graph-0.2  positive  es_migration_TC  ui_migration_TC
-    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
-    Set Global Variable    ${url}    ${IP_web}/elasticsearch/openstack-*-*/_search?search_type=count
+#    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
+    Set Global Variable    ${url}    ${kibana_node}/elasticsearch/log-*/_search?search_type=count
     Set Global Variable    ${method}    GET
     GET Request    ${url}
     ${response_body}    Get Response Body
@@ -32,8 +32,8 @@ Successful count of log messages in elasticsearch through proxy
 
 Successful search request through proxy
     [Tags]  Graph-0.3  positive  es_migration_TC  ui_migration_TC
-    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
-    Set Global Variable    ${url}    ${IP_web}/elasticsearch/openstack-*-*/_search
+#    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
+    Set Global Variable    ${url}    ${kibana_node}/elasticsearch/log-*/_search
     Set Global Variable    ${method}    GET
     GET Request    ${url}
     ${response_body}    Get Response Body
@@ -42,9 +42,9 @@ Successful search request through proxy
 
 There are correct mappings for elasticsearch
     [Tags]  Graph-0.4  positive  es_migration_TC  ui_migration_TC
-    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
+#    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
     Send Bunch Of Messages  /${ES_index}/logs/  count=${2}  size=1  body=${es_dict_main}
-    Set Global Variable    ${url}    ${IP_web}/elasticsearch/openstack-*-*/_mapping
+    Set Global Variable    ${url}    ${kibana_node}/elasticsearch/log-*/_mapping
     Set Global Variable    ${method}    GET
     GET Request    ${url}
     ${response_body}    Get Response Body
@@ -59,7 +59,7 @@ There are correct mappings for elasticsearch
 #There is no failed shards in the cluster
 #    [Tags]  Graph-0.5  positive  es_migration_TC  ui_migration_TC
 #    Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${TENANT}","Content-Type": "application/json"}
-#    Set Global Variable    ${url}    ${IP_web}:${ES_port}/_status
+#    Set Global Variable    ${url}    ${kibana_node}:${ES_port}/elasticsearch/_search_shards
 #    Set Global Variable    ${method}    GET
 #    GET Request    ${url}
 #    ${response_body}    Get Response Body

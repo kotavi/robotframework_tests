@@ -1,7 +1,7 @@
 *** Variables ***
 #DEV
 ${es_master_node}     10.109.8.8
-${kibana_node}        localhost
+${kibana_node}        http://10.109.8.8
 @{es_cluster}         10.109.8.8
 @{influxdb_cluster}    localhost
 

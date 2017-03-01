@@ -43,6 +43,9 @@ User send GET request to Graphana with body '${body}', ${PKI_TOKEN} for '${Tenan
     #"q=SELECT * from 41ae9ac9fb514915ad82fa6939f9c967_cpu_idle" -H "X-Auth-token:$PKI_TOKEN"
     Set Headers    {"X-Auth-token": "${PKI_TOKEN}", "X-Tenant": "${Tenant}"}
     Set Global Variable    ${url}    ${IP_web}/influxdb/series?${body}
+
+    /api/datasources/proxy/3/query?db=lma&q=SELECT
+
     Log    "GET request on link ${url}"
     Set Global Variable    ${method}    GET
     GET Request    ${url}
