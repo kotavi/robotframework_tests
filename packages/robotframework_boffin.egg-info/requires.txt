@@ -1,0 +1,7 @@
+robotframework>=2.8.1
+selenium>=2.33.0
+robotframework-selenium2library>=1.2.0
+robotframework-pydblibrary>=1.1
+beautifulsoup4>=4.2.1
+requests>=1.2.0
+robot

@@ -1,0 +1,14 @@
+setup.py
+src/Boffin/_Settings.py
+src/Boffin/__init__.py
+src/Boffin/version.py
+src/Boffin/keywords/_Rest.py
+src/Boffin/keywords/_Utils.py
+src/Boffin/keywords/_WebUIlib.py
+src/Boffin/keywords/__init__.py
+src/robotframework_boffin.egg-info/PKG-INFO
+src/robotframework_boffin.egg-info/SOURCES.txt
+src/robotframework_boffin.egg-info/dependency_links.txt
+src/robotframework_boffin.egg-info/not-zip-safe
+src/robotframework_boffin.egg-info/requires.txt
+src/robotframework_boffin.egg-info/top_level.txt

@@ -1,0 +1,15 @@
+Metadata-Version: 1.0
+Name: robotframework-boffin
+Version: 1.0rc3
+Summary: Extension for Robot Framework
+Home-page: UNKNOWN
+Author: Mirantis, Inc.
+Author-email: UNKNOWN
+License: Apache License 2.0
+Description: Robotframework-Boffin
+        ==========================
+        
+        This library extends available keywords of Robotframework and robotframework-selenium2library.
+        
+        And provides keywords for REST requests testing.
+Platform: any

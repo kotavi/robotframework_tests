@@ -1,0 +1,5 @@
+Flask
+MarkupSafe
+decorator
+itsdangerous
+six
