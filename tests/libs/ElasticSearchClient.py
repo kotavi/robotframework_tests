@@ -76,7 +76,7 @@ class ElasticSearchClient(object):
         _index, _type = url.replace("/", " ").split()
         sleep(1)
         res = self.es.search(index=_index, doc_type=_type,
-                             params={"size": 200000})
+                             params={"size": 1000})
         for r in res["hits"]["hits"]:
             if r["_source"].has_key('message') and r["_source"]["message"] == body:
                 # raise AssertionError(r["_source"])
@@ -98,7 +98,7 @@ class ElasticSearchClient(object):
         _index, _type = url.replace("/", " ").split()
         sleep(1)
         res = self.es.search(index=_index, doc_type=_type,
-                             params={"size": 200000})
+                             params={"size": 1000})
         for r in res["hits"]["hits"]:
             if r["_source"].has_key('message') and r["_source"]["message"] == body:
                 # raise AssertionError(r["_source"])
@@ -120,7 +120,7 @@ class ElasticSearchClient(object):
         _index, _type = url.replace("/", " ").split()
         sleep(1)
         res = self.es.search(index=_index, doc_type=_type,
-                             params={"size": 200000})
+                             params={"size": 1000})
         for r in res["hits"]["hits"]:
             if r["_source"].has_key(key) and r["_source"][key] == body:
                 return r["_source"]
@@ -133,7 +133,7 @@ class ElasticSearchClient(object):
     def _get_messages_from_es(self, url):
         _index, _type = url.replace("/", " ").split()
         result = self.es.search(index=_index, doc_type=_type,
-                                params={"size": 200000})
+                                params={"size": 1000})
         return result["hits"]["hits"]
 
     def get_message_from_es_by_keys(self, url, *args):
@@ -184,7 +184,7 @@ class ElasticSearchClient(object):
     def check_if_index_exist(self, url):
         _index, _type = url.replace("/", " ").split()
         try:
-            self.es.search(index=_index, doc_type=_type, params={"size": 200000})
+            self.es.search(index=_index, doc_type=_type, params={"size": 1000})
             return "Index %s exists." % url
         except Exception as e:
             return "Index %s does not exist." % url
@@ -337,7 +337,7 @@ class ElasticSearchClient(object):
     def get_message_from_es_by_index(self, _index):
         sleep(1)
         res = self.es.search(index=_index,
-                             params={"size": 200000})
+                             params={"size": 1000})
         return res["hits"]["hits"]
 
     def check_index_exists(self, index):
