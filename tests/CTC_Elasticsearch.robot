@@ -7,7 +7,9 @@ Library           libs/ElasticSearchClient.py
 Library           libs/Additional.py
 
 Suite Setup   Delete Index From Es  tmp_test
+Suite Setup   Delete Index From Es  openstack-549469538e5ab9fec47d3-2015.09.23
 Suite Teardown   Delete Index From Es  tmp_test
+Suite Teardown   Delete Index From Es  openstack-549469538e5ab9fec47d3-2015.09.23
 Test Setup    Get datetime
 
 *** Test Cases ***
@@ -60,6 +62,8 @@ Mappings are created for ES
     Delete Message From ES  /openstack-549469538e5ab9fec47d3-2015.09.23/logs/  ${message_id}
     ${message}  Get Message From ES By Id  /openstack-549469538e5ab9fec47d3-2015.09.23/logs/  ${message_id}
     Should Be Equal As Strings  ${message}  Message was not found
+
+    Delete Index From Es  openstack-549469538e5ab9fec47d3-2015.09.23
 
 Post message to ES index tmp_test
     [Tags]    CTC-EvSt-4   CTC-EvSt-5   CTC-EvSt-6  ctc_smoke  positive  es_migration_TC
