@@ -178,7 +178,7 @@ class ElasticSearchClient(object):
         _index, _type = url.replace("/", " ").split()
         sleep(1)
         res = self.es.search(index=_index, doc_type=_type,
-                             params={"size": 200000})
+                             params={"size": 1000})
         return res
 
     def check_if_index_exist(self, url):
